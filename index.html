@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriGuard - Smart Farmer Support & Protection</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>">
+</head>
+<body>
+
+  <!-- Mandatory Language Selection Modal -->
+  <div id="languagePromptModal" class="lang-modal-overlay">
+    <div class="lang-modal-card">
+      <div class="lang-modal-header">
+        <span class="leaf-icon">🌿</span>
+        <h2>Select Your Language</h2>
+        <p>భాషను ఎంచుకోండి / अपनी भाषा चुनें</p>
+      </div>
+
+      <div class="lang-options-grid">
+        <button type="button" class="lang-select-btn" data-lang="te">
+          <span class="native-lang">తెలుగు</span>
+          <span class="sub-lang">Telugu</span>
+        </button>
+        <button type="button" class="lang-select-btn" data-lang="hi">
+          <span class="native-lang">हिंदी</span>
+          <span class="sub-lang">Hindi</span>
+        </button>
+        <button type="button" class="lang-select-btn" data-lang="en">
+          <span class="native-lang">English</span>
+          <span class="sub-lang">English</span>
+        </button>
+      </div>
+
+      <button type="button" id="changeLangLaterBtn" class="lang-skip-btn">Continue with English</button>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="#" class="brand-logo">
+        <span class="logo-leaf">🌿</span>
+        <span class="logo-text">AgriGuard</span>
+      </a>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="#hero" data-i18n="navHome">Home</a></li>
+          <li><a href="#services" data-i18n="navServices">Services</a></li>
+          <li><a href="#scanner" data-i18n="navScanner">AI Scanner</a></li>
+          <li><a href="#weather" data-i18n="navWeather">Live Alerts</a></li>
+          <li><a href="#advisory" data-i18n="navAdvisory">Advisory</a></li>
+          <li><a href="#contact" data-i18n="navContact">Ask Specialist</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title" data-i18n="heroTitle">Protecting Crops, Empowering Farmers</h1>
+      <p class="hero-desc" data-i18n="heroDesc">AgriGuard provides real-time crop disease detection, soil guidance, and weather alerts to secure your harvest.</p>
+      <a href="#scanner" class="btn-hero" data-i18n="heroBtn">Scan Crop Health</a>
+    </div>
+  </section>
+
+  <!-- Core Services -->
+  <section id="services" class="services-section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="servicesTitle">Our Core Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🛡️</div>
+          <h3 data-i18n="service1Title">Crop Disease Guard</h3>
+          <p data-i18n="service1Desc">Instant diagnosis and treatment recommendations for pest attacks and leaf damage.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🌱</div>
+          <h3 data-i18n="service2Title">Soil & Fertilizer Guide</h3>
+          <p data-i18n="service2Desc">Tailored NPK and micronutrient advice based on your soil type and crop selection.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">⚡</div>
+          <h3 data-i18n="service3Title">Weather & Pest Warnings</h3>
+          <p data-i18n="service3Desc">Localized forecasts and preventive measures against upcoming climate risks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Leaf Scanner -->
+  <section id="scanner" class="scanner-section">
+    <div class="container scanner-card">
+      <h2 class="section-title" data-i18n="scannerTitle">📸 AgriGuard AI Leaf & Health Scanner</h2>
+      <p class="section-subtitle" data-i18n="scannerSubtitle">Take a photo or upload a crop leaf to calculate accuracy, water moisture, pesticide dosage, and health score.</p>
+
+      <div class="upload-controls">
+        <label for="leafInput" class="btn-upload" data-i18n="uploadBtn">📷 Take Photo / Upload Leaf</label>
+        <input type="file" id="leafInput" accept="image/*" capture="environment" class="hidden-input">
+        <span id="fileNameDisplay" class="file-name-text" data-i18n="noPhotoText">No leaf photo selected</span>
+      </div>
+
+      <div class="preview-wrapper">
+        <img id="leafPreview" alt="Crop Leaf Preview" class="preview-img hidden">
+        <div id="previewPlaceholder" class="preview-placeholder">🌿 Image preview will appear here</div>
+      </div>
+
+      <button id="analyzeBtn" class="btn-analyze" data-i18n="analyzeBtn">Analyze Crop Health</button>
+
+      <!-- Diagnostic Results -->
+      <div id="diagnosticReport" class="report-box hidden">
+        <h3 class="report-heading" data-i18n="reportTitle">Crop Diagnostics Report</h3>
+        
+        <div class="metric-card">
+          <div class="metric-header">
+            <span data-i18n="metricHealth">Overall Crop Health</span>
+          </div>
+          <div class="progress-bar"><div id="healthBar" class="bar-fill green-fill" style="width: 0%"></div></div>
+          <strong id="healthVal" class="metric-val">0%</strong>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span data-i18n="metricAccuracy">Diagnosis Accuracy</span>
+          </div>
+          <div class="progress-bar"><div id="accuracyBar" class="bar-fill blue-fill" style="width: 0%"></div></div>
+          <strong id="accuracyVal" class="metric-val">0%</strong>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span data-i18n="metricWater">Water / Moisture Level</span>
+          </div>
+          <div class="progress-bar"><div id="waterBar" class="bar-fill teal-fill" style="width: 0%"></div></div>
+          <strong id="waterVal" class="metric-val">0%</strong>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span data-i18n="metricPesticide">Pesticide Requirement</span>
+          </div>
+          <div class="progress-bar"><div id="pesticideBar" class="bar-fill orange-fill" style="width: 0%"></div></div>
+          <strong id="pesticideVal" class="metric-val">0%</strong>
+        </div>
+
+        <div class="treatment-advisory">
+          <h4 id="reportCondition" data-i18n="analyzingCondition">Condition: Healthy Crop Leaf</h4>
+          <p id="treatmentText" data-i18n="treatmentPlaceholder">Treatment advice will appear here.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Crop Doctor Direct Advisory Card -->
+<div id="cropDoctorCard" class="doctor-card hidden">
+  <div class="doctor-badge">
+    <span class="doctor-avatar">👨‍⚕️🌾</span>
+    <div>
+      <h4 class="doctor-title" data-i18n="doctorCardTitle">AgriGuard Crop Doctor</h4>
+      <p class="doctor-subtitle" data-i18n="doctorCardSubtitle">Instant WhatsApp prescription sharing with local KVK & agri officers.</p>
+    </div>
+  </div>
+
+  <div class="doctor-field-inputs">
+    <div class="doctor-form-row">
+      <input type="text" id="docFarmerName" data-i18n-placeholder="namePlaceholder" placeholder="Farmer Name" />
+      <input type="text" id="docLocation" data-i18n-placeholder="lblLocationPlaceholder" placeholder="Village / District" />
+    </div>
+    <div class="doctor-form-row">
+      <input type="tel" id="docCustomPhone" placeholder="Specialist WhatsApp (Optional, default KVK helpline)" />
+    </div>
+  </div>
+
+  <div class="doctor-action-btns">
+    <button type="button" class="btn-doctor-whatsapp" onclick="sendToCropDoctor()">
+      💬 <span data-i18n="btnSendDoctor">Send Case to Crop Doctor</span>
+    </button>
+  </div>
+</div>
+  </section>
+
+  <!-- Weather & Climate Warnings -->
+  <section id="weather" class="weather-section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="weatherSectionTitle">🌦️ Localized Weather & Climate Warning</h2>
+      <p class="section-subtitle" data-i18n="weatherSectionSubtitle">Real-time hyperlocal agricultural alerts and climate forecast for your field.</p>
+      
+      <div class="weather-card">
+        <p id="locationStatus" class="location-status" data-i18n="detectingLocation">📍 Detecting your field location...</p>
+        
+        <div class="weather-grid">
+          <div class="weather-item">
+            <span class="w-label" data-i18n="tempLabel">Temperature</span>
+            <strong id="tempVal">-- °C</strong>
+          </div>
+          <div class="weather-item">
+            <span class="w-label" data-i18n="humidityLabel">Humidity</span>
+            <strong id="humidityVal">-- %</strong>
+          </div>
+          <div class="weather-item">
+            <span class="w-label" data-i18n="rainLabel">Precipitation & Rain</span>
+            <strong id="rainVal">-- mm</strong>
+          </div>
+          <div class="weather-item">
+            <span class="w-label" data-i18n="windLabel">Wind Speed</span>
+            <strong id="windVal">-- km/h</strong>
+          </div>
+        </div>
+
+        <div class="climate-warning-banner">
+          <h4 data-i18n="climateAdvisoryTitle">Climate Advisory</h4>
+          <p id="climateText" data-i18n="climateMonitoringText">Monitoring current field conditions...</p>
+          <small id="climateAction" data-i18n="climateDefaultAction">Recommended Action: Ensure adequate irrigation.</small>
+        </div>
+
+        <button id="refreshWeatherBtn" class="btn-refresh" data-i18n="refreshWeatherBtn">🔄 Refresh Weather</button>
+      </div>
+    </div>
+  </section>
+  <!-- 1. Live Mandi Market Prices Section -->
+  <section id="mandi" class="feature-section">
+    <div class="container text-center">
+      <h2 class="feature-heading" data-i18n="mandiTitle">📊 Live Mandi Market Prices (మార్కెట్ ధరలు)</h2>
+      <p class="feature-subheading" data-i18n="mandiSubtitle">Real-time daily modal market rates and MSP updates across regional agricultural markets.</p>
+
+      <div class="mandi-filter-bar">
+        <div class="mandi-input-wrap">
+          <input type="text" id="mandiSearchInput" data-i18n-placeholder="mandiSearchPlaceholder" placeholder="🔍 Search crop (e.g. Cotton, Chilli, Rice)..." onkeyup="filterMandiCards()">
+        </div>
+        <div class="mandi-select-wrap">
+          <select id="mandiStateFilter" onchange="filterMandiCards()">
+            <option value="all" data-i18n="allMarkets">All Markets</option>
+            <option value="Guntur">Guntur APMC</option>
+            <option value="Warangal">Warangal APMC</option>
+            <option value="Khammam">Khammam APMC</option>
+            <option value="Kurnool">Kurnool APMC</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Live Mandi Rate Cards Grid -->
+      <div class="mandi-grid" id="mandiGrid"></div>
+
+      <p class="disclaimer-text" data-i18n="mandiDisclaimer">⚠️ Market rates reflect average daily modal trading prices per quintal (100 kg).</p>
+    </div>
+  </section>
+
+  <!-- 1. Smart Fertilizer & NPK Dosage Calculator Section -->
+<section id="fertilizer" class="feature-section alt-bg">
+  <div class="container text-center">
+    <h2 class="feature-heading" data-i18n="fertTitle">🧪 Smart Fertilizer & NPK Dosage Calculator</h2>
+    <p class="feature-subheading" data-i18n="fertSubtitle">Calculate exact Urea, DAP, and Potash requirements tailored to your field acreage.</p>
+
+    <div class="calc-card">
+      <div class="form-group-center">
+        <label data-i18n="lblCropSelect">Select Crop</label>
+        <select id="calcCrop">
+          <option value="paddy" data-i18n="optPaddy">Paddy / Rice (వరి / धान)</option>
+          <option value="cotton" data-i18n="optCotton">Cotton (పత్తి / कपास)</option>
+          <option value="chilli" data-i18n="optChilli">Chilli (మిరప / मिर्च)</option>
+          <option value="maize" data-i18n="optMaize">Maize (మొక్కజొన్న / मक्का)</option>
+        </select>
+      </div>
+
+      <div class="form-group-center">
+        <label data-i18n="lblLandArea">Field Area (Acres)</label>
+        <input type="number" id="calcAcres" min="0.5" step="0.5" value="1.0">
+      </div>
+
+      <div class="form-group-center">
+        <label data-i18n="lblSoilType">Soil Type</label>
+        <select id="calcSoil">
+          <option value="black" data-i18n="optBlackSoil">Black Soil (నల్లరేగడి నేల)</option>
+          <option value="red" data-i18n="optRedSoil">Red Soil (ఎర్ర నేల)</option>
+          <option value="sandy" data-i18n="optSandySoil">Sandy / Alluvial (ఇసుక నేల)</option>
+        </select>
+      </div>
+
+      <button type="button" class="btn-calculate" onclick="calculateFertilizer()" data-i18n="btnCalculateFert">Calculate Required Dosage</button>
+
+      <div id="fertResults" class="fert-results-box hidden">
+        <h4 data-i18n="fertResultsTitle">Recommended Total Nutrients:</h4>
+        <div class="fert-pills-row">
+          <div class="fert-pill urea"><span id="ureaVal">0</span> <span data-i18n="lblUreaUnit">kg Urea (46% N)</span></div>
+          <div class="fert-pill dap"><span id="dapVal">0</span> <span data-i18n="lblDapUnit">kg DAP (18:46:0)</span></div>
+          <div class="fert-pill mop"><span id="mopVal">0</span> <span data-i18n="lblMopUnit">kg MOP / Potash</span></div>
+        </div>
+        <p id="fertScheduleNote" class="fert-schedule-note"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Agricultural Schemes & Financial Support Section -->
+<section id="schemes" class="feature-section">
+  <div class="container text-center">
+    <h2 class="feature-heading" data-i18n="schemesTitle">🏛️ Agricultural Schemes & Financial Support</h2>
+    <p class="feature-subheading" data-i18n="schemesSubtitle">Direct financial benefits, crop insurance, and equipment subsidies for farmers.</p>
+
+    <div class="schemes-grid">
+      <!-- Card 1 -->
+      <div class="scheme-card">
+        <span class="scheme-tag" data-i18n="tagDirectIncome">Direct Income</span>
+        <h3 class="scheme-title">PM-Kisan Samman Nidhi</h3>
+        <p class="scheme-desc" data-i18n="pmKisanDesc">Annual direct financial benefit of ₹6,000 in 3 equal four-monthly installments to farmer families.</p>
+        <a href="https://pmkisan.gov.in" target="_blank" class="scheme-action-link" data-i18n="btnApply">Apply / Check Status →</a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="scheme-card">
+        <span class="scheme-tag" data-i18n="tagCropInsurance">Crop Insurance</span>
+        <h3 class="scheme-title">PM Fasal Bima Yojana (PMFBY)</h3>
+        <p class="scheme-desc" data-i18n="pmfbyDesc">Comprehensive risk insurance covering yield losses due to non-preventable natural risks, pests, and cyclones.</p>
+        <a href="https://pmfby.gov.in" target="_blank" class="scheme-action-link" data-i18n="btnApply">Apply / Check Status →</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="scheme-card">
+        <span class="scheme-tag" data-i18n="tagMicroIrrigation">Micro Irrigation</span>
+        <h3 class="scheme-title">Per Drop More Crop (Drip/Sprinkler)</h3>
+        <p class="scheme-desc" data-i18n="dripDesc">Up to 70% to 90% subsidy for micro-irrigation system installation to maximize water efficiency.</p>
+        <a href="https://pmksy.gov.in" target="_blank" class="scheme-action-link" data-i18n="btnApply">Apply / Check Status →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Advisory Board -->
+  <section id="advisory" class="advisory-section">
+    <div class="container">
+      <div class="advisory-card">
+        <h3 data-i18n="advisoryTitle">AgriGuard Advisory Board</h3>
+        <p class="advisory-quote"><strong data-i18n="recPrefix">Today's Recommendation: </strong><span id="advisoryTip" data-i18n="advisoryTipText">Ensure adequate drainage in low-lying fields ahead of upcoming seasonal rain.</span></p>
+        <button id="nextTipBtn" class="btn-tip" data-i18n="nextTipBtn">Next Farming Tip</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ask an Agri Specialist Contact Form -->
+  <section id="contact" class="contact-section">
+    <div class="container contact-card">
+      <h2 class="section-title" data-i18n="specialistTitle">Ask an Agri Specialist</h2>
+      
+      <form id="contactForm">
+        <div class="form-group">
+          <input type="text" name="name" id="farmerName" data-i18n-placeholder="namePlaceholder" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <input type="tel" name="phone" id="farmerPhone" data-i18n-placeholder="phonePlaceholder" placeholder="Phone Number" required>
+        </div>
+        <div class="form-group">
+          <select name="crop" id="farmerCrop" required>
+            <option value="" disabled selected data-i18n="selectCropOption">-- Select Your Main Crop --</option>
+            <option value="Rice" data-i18n="cropRice">Paddy / Rice</option>
+            <option value="Cotton" data-i18n="cropCotton">Cotton</option>
+            <option value="Chilli" data-i18n="cropChilli">Chilli / Spices</option>
+            <option value="Vegetable" data-i18n="cropVegetable">Vegetable</option>
+            <option value="Other" data-i18n="cropOther">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea name="issue" id="farmerIssue" rows="4" data-i18n-placeholder="messagePlaceholder" placeholder="Describe the issue or ask a question..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit" data-i18n="submitBtn">Submit Request</button>
+      </form>
+      <div id="formStatus" class="form-status"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>@ 2026 AgriGuard Support Information System. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
