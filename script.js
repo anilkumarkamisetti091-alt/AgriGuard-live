@@ -632,6 +632,15 @@ function initContactForm() {
     } finally {
       if (submitBtn) submitBtn.disabled = false;
     }
+    // Change from local path:
+// const response = await fetch("/api/contact", ...);
+
+// To your live Render backend URL:
+const response = await fetch("https://agriguard-api.onrender.com/api/contact", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(payload)
+});
   });
 }
 // ==========================================
@@ -870,3 +879,4 @@ function sendToCropDoctor() {
   }
 }
 window.sendToCropDoctor = sendToCropDoctor;
+
