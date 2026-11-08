@@ -1,931 +1,128 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
-}
-
-body {
-  background-color: #f8faf8;
-  color: #1f2937;
-  line-height: 1.6;
-}
-
-.container {
-  width: 90%;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-/* Header & Navbar */
-.header {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 5%;
-}
-
-.brand-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-}
-
-.logo-leaf {
-  font-size: 1.8rem;
-}
-
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #166534;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 1.5rem;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #374151;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: color 0.2s;
-}
-
-.nav-links a:hover {
-  color: #166534;
-}
-
-/* Hero Section */
-.hero-section {
-  background: linear-gradient(rgba(22, 101, 52, 0.82), rgba(22, 101, 52, 0.88)), 
-              url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-  color: #ffffff;
-  text-align: center;
-  padding: 5rem 1.5rem;
-}
-
-.hero-title {
-  font-size: 2.2rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
-
-.hero-desc {
-  font-size: 1.1rem;
-  max-width: 650px;
-  margin: 0 auto 2rem;
-  opacity: 0.95;
-}
-
-.btn-hero {
-  display: inline-block;
-  background-color: #f59e0b;
-  color: #111827;
-  font-weight: 700;
-  padding: 0.9rem 2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color 0.2s;
-}
-
-.btn-hero:hover {
-  background-color: #d97706;
-}
-
-/* Services */
-.services-section {
-  padding: 4rem 0;
-  text-align: center;
-}
-
-.section-title {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #166534;
-  margin-bottom: 0.5rem;
-}
-
-.section-subtitle {
-  color: #6b7280;
-  font-size: 0.95rem;
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.services-grid {
+/* Farmer challenges and planner sections */
+.challenge-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
 }
 
-.service-card {
+.challenge-card {
   background: #ffffff;
   border: 1px solid #e5e7eb;
-  padding: 2rem;
-  border-radius: 12px;
+  border-radius: 14px;
+  padding: 1.5rem 1.2rem;
   text-align: left;
+  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.04);
 }
 
-.service-icon {
+.challenge-icon {
   font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.service-card h3 {
-  font-size: 1.2rem;
-  color: #111827;
-  margin-bottom: 0.5rem;
-}
-
-.service-card p {
-  color: #4b5563;
-  font-size: 0.9rem;
-}
-
-/* AI Scanner Card */
-.scanner-section {
-  padding: 3rem 0;
-}
-
-.scanner-card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 2.5rem 2rem;
-  text-align: center;
-}
-
-.upload-controls {
-  margin: 1.5rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.hidden-input {
-  display: none;
-}
-
-.btn-upload {
   display: inline-block;
-  background-color: #f59e0b;
-  color: #111827;
-  font-weight: 700;
-  padding: 0.8rem 1.8rem;
-  border-radius: 8px;
-  cursor: pointer;
-  border: none;
-}
-
-.file-name-text {
-  font-size: 0.85rem;
-  color: #6b7280;
-}
-
-.preview-wrapper {
-  max-width: 420px;
-  min-height: 240px;
-  margin: 1.5rem auto;
-  border: 2px dashed #9ca3af;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f3f4f6;
-  overflow: hidden;
-}
-
-.preview-img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-}
-
-.preview-placeholder {
-  color: #6b7280;
-  font-weight: 600;
-}
-
-.btn-analyze {
-  background-color: #166534;
-  color: #ffffff;
-  border: none;
-  font-weight: 700;
-  font-size: 1.05rem;
-  padding: 0.9rem 2.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-  margin: 1rem 0;
-}
-
-.btn-analyze:hover {
-  background-color: #14532d;
-}
-
-/* Diagnostics Output */
-.report-box {
-  margin-top: 2rem;
-  text-align: left;
-  border-top: 1px solid #e5e7eb;
-  padding-top: 1.5rem;
-}
-
-.report-heading {
-  font-size: 1.3rem;
-  color: #1f2937;
-  margin-bottom: 1.2rem;
-}
-
-.metric-card {
-  background: #f9fafb;
-  border-radius: 10px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
-
-.metric-header {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #374151;
-  margin-bottom: 0.4rem;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 10px;
-  background: #e5e7eb;
-  border-radius: 5px;
-  overflow: hidden;
-  margin: 0.4rem 0;
-}
-
-.bar-fill {
-  height: 100%;
-  transition: width 0.8s ease-in-out;
-}
-
-.green-fill { background-color: #16a34a; }
-.blue-fill { background-color: #0284c7; }
-.teal-fill { background-color: #0d9488; }
-.orange-fill { background-color: #ea580c; }
-
-.metric-val {
-  font-size: 1.1rem;
-  color: #111827;
-}
-
-.treatment-advisory {
-  background-color: #ecfdf5;
-  border-left: 4px solid #10b981;
-  padding: 1rem;
-  border-radius: 6px;
-  margin-top: 1.2rem;
-}
-
-.treatment-advisory h4 {
-  color: #065f46;
-  margin-bottom: 0.3rem;
-}
-
-.treatment-advisory p {
-  color: #047857;
-  font-size: 0.95rem;
-}
-
-/* Weather & Climate Warning */
-.weather-section {
-  padding: 3rem 0;
-}
-
-.weather-card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 2rem;
-}
-
-.location-status {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #4b5563;
-  margin-bottom: 1.5rem;
-}
-
-.weather-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1.2rem;
-  margin-bottom: 1.5rem;
-}
-
-.weather-item {
-  background: #f9fafb;
-  border: 1px solid #f3f4f6;
-  border-radius: 10px;
-  padding: 1rem;
-  text-align: center;
-}
-
-.w-label {
-  display: block;
-  font-size: 0.85rem;
-  color: #6b7280;
-  margin-bottom: 0.3rem;
-}
-
-.weather-item strong {
-  font-size: 1.3rem;
-  color: #111827;
-}
-
-.climate-warning-banner {
-  background-color: #fffbeb;
-  border-left: 4px solid #f59e0b;
-  padding: 1rem;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.climate-warning-banner h4 {
-  color: #92400e;
-  margin-bottom: 0.3rem;
-}
-
-.climate-warning-banner p {
-  color: #b45309;
-  font-size: 0.95rem;
-}
-
-.climate-warning-banner small {
-  color: #78350f;
-  font-weight: 600;
-}
-
-.btn-refresh {
-  background: none;
-  border: 1px solid #d1d5db;
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* Advisory Board */
-.advisory-section {
-  padding: 2rem 0;
-}
-
-.advisory-card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 2rem;
-  text-align: left;
-}
-
-.advisory-card h3 {
-  color: #166534;
   margin-bottom: 0.8rem;
 }
 
-.advisory-quote {
-  font-size: 1rem;
-  color: #374151;
-  margin-bottom: 1.2rem;
-}
-
-.btn-tip {
-  background-color: #166534;
-  color: #ffffff;
-  border: none;
-  padding: 0.65rem 1.2rem;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* Contact Form */
-.contact-section {
-  padding: 3rem 0 5rem;
-}
-
-.contact-card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 2.5rem 2rem;
-  max-width: 600px;
-}
-
-.form-group {
-  margin-bottom: 1.2rem;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 0.85rem 1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  outline: none;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: #166534;
-}
-
-.btn-submit {
-  width: 100%;
-  background-color: #f59e0b;
-  color: #111827;
-  border: none;
-  font-weight: 700;
-  padding: 0.9rem;
-  border-radius: 8px;
-  font-size: 1.05rem;
-  cursor: pointer;
-}
-
-.form-status {
-  margin-top: 1rem;
-  text-align: center;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-/* Footer */
-.footer {
-  background-color: #166534;
-  color: #ffffff;
-  text-align: center;
-  padding: 1.5rem;
-  font-size: 0.85rem;
-}
-
-/* Language Selection Modal */
-.lang-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.65);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.lang-modal-overlay.hidden {
-  display: none;
-}
-
-.lang-modal-card {
-  background: #ffffff;
-  width: 90%;
-  max-width: 420px;
-  border-radius: 16px;
-  padding: 2rem;
-  text-align: center;
-}
-
-.leaf-icon {
-  font-size: 2.5rem;
-}
-
-.lang-modal-header h2 {
-  font-size: 1.3rem;
-  color: #111827;
-  margin-top: 0.5rem;
-}
-
-.lang-modal-header p {
-  color: #6b7280;
-  font-size: 0.9rem;
-  margin-bottom: 1.5rem;
-}
-
-.lang-options-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  margin-bottom: 1.5rem;
-}
-
-.lang-select-btn {
-  background-color: #f3f4f6;
-  border: 1px solid #e5e7eb;
-  padding: 0.9rem;
-  border-radius: 10px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.lang-select-btn:hover {
-  background-color: #ecfdf5;
-  border-color: #10b981;
-}
-
-.native-lang {
-  font-size: 1.1rem;
-  font-weight: 700;
+.challenge-card h3 {
   color: #166534;
-}
-
-.sub-lang {
-  font-size: 0.85rem;
-  color: #6b7280;
-}
-
-.lang-skip-btn {
-  background: none;
-  border: none;
-  color: #6b7280;
-  font-size: 0.85rem;
-  cursor: pointer;
-  text-decoration: underline;
-}
-/* --------------------------------------------------
-   MANDI, FERTILIZER CALCULATOR & SCHEMES SECTIONS
-   -------------------------------------------------- */
-.feature-section {
-  padding: 4rem 1.5rem;
-}
-
-.feature-section.alt-bg {
-  background-color: #f7faf8;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.feature-heading {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #1a4223;
   margin-bottom: 0.6rem;
 }
 
-.feature-subheading {
+.challenge-card p {
   color: #4b5563;
-  font-size: 1rem;
-  max-width: 620px;
-  margin: 0 auto 2rem;
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.profit-planner {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 640px;
+  margin: 0 auto;
+  box-shadow: 0 6px 20px rgba(17, 24, 39, 0.03);
+}
+
+.profit-results {
+  margin-top: 1.5rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.profit-results.hidden {
+  display: none;
+}
+
+.profit-stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.profit-stat-card {
+  background: #ffffff;
+  border: 1px solid #dcfce7;
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  text-align: left;
+}
+
+.profit-stat-card span {
+  display: block;
+  color: #6b7280;
+  font-size: 0.82rem;
+  margin-bottom: 0.35rem;
+}
+
+.profit-stat-card strong {
+  font-size: 1.3rem;
+  color: #111827;
+}
+
+.profit-summary {
+  margin-top: 0.9rem;
+  color: #166534;
+  font-weight: 700;
   line-height: 1.5;
 }
 
-/* Mandi Filter Controls */
-.mandi-filter-bar {
-  max-width: 480px;
-  margin: 0 auto 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-}
-
-.mandi-filter-bar input,
-.mandi-filter-bar select {
-  width: 100%;
-  padding: 0.85rem 1.2rem;
-  border: 1.5px solid #d1d5db;
-  border-radius: 10px;
-  font-size: 0.95rem;
-  outline: none;
-  background-color: #ffffff;
-}
-
-.mandi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.2rem;
-  max-width: 900px;
-  margin: 1.5rem auto;
-}
-
-.mandi-card {
+.irrigation-planner {
   background: #ffffff;
-  padding: 1.4rem;
-  border-radius: 12px;
   border: 1px solid #e5e7eb;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.mandi-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.mandi-crop-name {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #166534;
-}
-
-.mandi-market-tag {
-  font-size: 0.75rem;
-  background-color: #ecfdf5;
-  color: #065f46;
-  padding: 3px 8px;
-  border-radius: 12px;
-  font-weight: 600;
-}
-
-.mandi-price-val {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: #111827;
-  margin: 0.6rem 0;
-}
-
-.mandi-price-val small {
-  font-size: 0.85rem;
-  color: #6b7280;
-  font-weight: normal;
-}
-
-.mandi-trend-up {
-  color: #16a34a;
-  font-weight: 700;
-  font-size: 0.85rem;
-}
-
-.mandi-trend-down {
-  color: #dc2626;
-  font-weight: 700;
-  font-size: 0.85rem;
-}
-
-.disclaimer-text {
-  color: #64748b;
-  font-size: 0.88rem;
-  margin-top: 1.5rem;
-}
-
-/* Fertilizer Calculator Card */
-.calc-card {
-  background: #ffffff;
   border-radius: 16px;
-  padding: 2.5rem 2rem;
-  max-width: 460px;
-  margin: 0 auto;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e5e7eb;
-  text-align: center;
+  padding: 2rem;
+  max-width: 720px;
+  margin: 1.5rem auto 0;
+  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.03);
 }
 
-.form-group-center {
-  margin-bottom: 1.3rem;
-  text-align: center;
+.irrigation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
 }
 
-.form-group-center label {
-  display: block;
-  font-weight: 600;
-  font-size: 1.05rem;
-  color: #1f2937;
+.irrigation-output {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: #ecfeff;
+  border: 1px solid #a5f3fc;
+  color: #0f172a;
+  text-align: left;
+}
+
+.irrigation-output.hidden {
+  display: none;
+}
+
+.irrigation-output h4 {
+  color: #0f766e;
   margin-bottom: 0.5rem;
 }
 
-.form-group-center select,
-.form-group-center input {
-  width: 100%;
-  max-width: 320px;
-  margin: 0 auto;
-  padding: 0.65rem 0.8rem;
-  border: 1.5px solid #cbd5e1;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  text-align: center;
-  outline: none;
-  background-color: #ffffff;
-}
-
-.btn-calculate {
-  background-color: #195e24;
-  color: #ffffff;
-  border: none;
-  font-weight: 700;
-  font-size: 1rem;
-  padding: 0.85rem 1.8rem;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 100%;
-  max-width: 320px;
-  margin-top: 0.5rem;
-  transition: background-color 0.2s;
-}
-
-.btn-calculate:hover {
-  background-color: #13461b;
-}
-
-.fert-results-box {
-  margin-top: 1.5rem;
-  padding: 1.2rem;
-  background-color: #f0fdf4;
-  border-radius: 10px;
-  border: 1px solid #bbf7d0;
-  text-align: left;
-}
-
-.fert-pills-row {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin: 0.8rem 0;
-}
-
-.fert-pill {
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.fert-pill.urea { background-color: #e0f2fe; color: #0369a1; }
-.fert-pill.dap { background-color: #fef3c7; color: #b45309; }
-.fert-pill.mop { background-color: #fce7f3; color: #be185d; }
-
-.fert-schedule-note {
-  font-size: 0.85rem;
-  color: #374151;
-  line-height: 1.4;
-}
-
-/* Schemes Cards Grid */
-.schemes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.scheme-card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 2rem;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.scheme-tag {
-  align-self: flex-start;
-  background-color: #e8f5e9;
-  color: #1b5e20;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-}
-
-.scheme-title {
-  font-size: 1.25rem;
-  color: #111827;
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-}
-
-.scheme-desc {
-  color: #4b5563;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-}
-
-.scheme-action-link {
-  color: #166534;
-  font-weight: 700;
-  text-decoration: none;
-  font-size: 0.95rem;
-}
-
-.scheme-action-link:hover {
-  text-decoration: underline;
-}
-/* --------------------------------------------------
-   CROP DOCTOR WHATSAPP BOT INTEGRATION
-   -------------------------------------------------- */
-.doctor-card {
-  margin-top: 1.5rem;
-  background: #ffffff;
-  border: 1.5px solid #86efac;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 15px rgba(22, 101, 52, 0.08);
-}
-
-.doctor-badge {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 1.2rem;
-}
-
-.doctor-avatar {
-  font-size: 2rem;
-  background: #f0fdf4;
-  padding: 6px 10px;
-  border-radius: 50%;
-  border: 1px solid #bbf7d0;
-}
-
-.doctor-title {
-  font-size: 1.15rem;
-  color: #14532d;
-  font-weight: 800;
-  margin-bottom: 2px;
-}
-
-.doctor-subtitle {
-  font-size: 0.85rem;
-  color: #4b5563;
-}
-
-.doctor-field-inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 1.2rem;
-}
-
-.doctor-form-row {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.doctor-form-row input {
-  flex: 1;
-  padding: 0.75rem 1rem;
-  border: 1.5px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  outline: none;
-  background-color: #f9fafb;
-}
-
-.doctor-form-row input:focus {
-  border-color: #166534;
-  background-color: #ffffff;
-}
-
-.doctor-action-btns {
-  display: flex;
-  gap: 0.8rem;
-}
-
-.btn-doctor-whatsapp {
-  width: 100%;
-  background: #25d366;
-  color: #ffffff;
-  border: none;
-  font-size: 1rem;
-  font-weight: 700;
-  padding: 0.85rem 1.2rem;
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: background 0.2s ease;
-}
-
-.btn-doctor-whatsapp:hover {
-  background: #1eb956;
-}
-
-@media (max-width: 600px) {
-  .doctor-form-row {
-    flex-direction: column;
-  }
+.irrigation-output p {
+  line-height: 1.6;
+  margin-bottom: 0.4rem;
 }
