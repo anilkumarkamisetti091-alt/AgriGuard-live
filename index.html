@@ -9,7 +9,6 @@
 </head>
 <body>
 
-  <!-- Mandatory Language Selection Modal -->
   <div id="languagePromptModal" class="lang-modal-overlay">
     <div class="lang-modal-card">
       <div class="lang-modal-header">
@@ -17,7 +16,6 @@
         <h2>Select Your Language</h2>
         <p>భాషను ఎంచుకోండి / अपनी भाषा चुनें</p>
       </div>
-
       <div class="lang-options-grid">
         <button type="button" class="lang-select-btn" data-lang="te">
           <span class="native-lang">తెలుగు</span>
@@ -32,12 +30,10 @@
           <span class="sub-lang">English</span>
         </button>
       </div>
-
       <button type="button" id="changeLangLaterBtn" class="lang-skip-btn">Continue with English</button>
     </div>
   </div>
 
-  <!-- Navigation Bar -->
   <header class="header">
     <div class="nav-container">
       <a href="#" class="brand-logo">
@@ -51,13 +47,13 @@
           <li><a href="#scanner" data-i18n="navScanner">AI Scanner</a></li>
           <li><a href="#weather" data-i18n="navWeather">Live Alerts</a></li>
           <li><a href="#advisory" data-i18n="navAdvisory">Advisory</a></li>
+          <li><a href="#tools" data-i18n="navTools">Farmer Tools</a></li>
           <li><a href="#contact" data-i18n="navContact">Ask Specialist</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
   <section id="hero" class="hero-section">
     <div class="hero-content">
       <h1 class="hero-title" data-i18n="heroTitle">Protecting Crops, Empowering Farmers</h1>
@@ -66,7 +62,6 @@
     </div>
   </section>
 
-  <!-- Core Services -->
   <section id="services" class="services-section">
     <div class="container">
       <h2 class="section-title" data-i18n="servicesTitle">Our Core Services</h2>
@@ -90,7 +85,6 @@
     </div>
   </section>
 
-  <!-- AI Leaf Scanner -->
   <section id="scanner" class="scanner-section">
     <div class="container scanner-card">
       <h2 class="section-title" data-i18n="scannerTitle">📸 AgriGuard AI Leaf & Health Scanner</h2>
@@ -109,38 +103,28 @@
 
       <button id="analyzeBtn" class="btn-analyze" data-i18n="analyzeBtn">Analyze Crop Health</button>
 
-      <!-- Diagnostic Results -->
       <div id="diagnosticReport" class="report-box hidden">
         <h3 class="report-heading" data-i18n="reportTitle">Crop Diagnostics Report</h3>
-
         <div class="metric-card">
-          <div class="metric-header">
-            <span data-i18n="metricHealth">Overall Crop Health</span>
-          </div>
+          <div class="metric-header"><span data-i18n="metricHealth">Overall Crop Health</span></div>
           <div class="progress-bar"><div id="healthBar" class="bar-fill green-fill" style="width: 0%"></div></div>
           <strong id="healthVal" class="metric-val">0%</strong>
         </div>
 
         <div class="metric-card">
-          <div class="metric-header">
-            <span data-i18n="metricAccuracy">Diagnosis Accuracy</span>
-          </div>
+          <div class="metric-header"><span data-i18n="metricAccuracy">Diagnosis Accuracy</span></div>
           <div class="progress-bar"><div id="accuracyBar" class="bar-fill blue-fill" style="width: 0%"></div></div>
           <strong id="accuracyVal" class="metric-val">0%</strong>
         </div>
 
         <div class="metric-card">
-          <div class="metric-header">
-            <span data-i18n="metricWater">Water / Moisture Level</span>
-          </div>
+          <div class="metric-header"><span data-i18n="metricWater">Water / Moisture Level</span></div>
           <div class="progress-bar"><div id="waterBar" class="bar-fill teal-fill" style="width: 0%"></div></div>
           <strong id="waterVal" class="metric-val">0%</strong>
         </div>
 
         <div class="metric-card">
-          <div class="metric-header">
-            <span data-i18n="metricPesticide">Pesticide Requirement</span>
-          </div>
+          <div class="metric-header"><span data-i18n="metricPesticide">Pesticide Requirement</span></div>
           <div class="progress-bar"><div id="pesticideBar" class="bar-fill orange-fill" style="width: 0%"></div></div>
           <strong id="pesticideVal" class="metric-val">0%</strong>
         </div>
@@ -151,7 +135,7 @@
         </div>
       </div>
     </div>
-    <!-- Crop Doctor Direct Advisory Card -->
+
     <div id="cropDoctorCard" class="doctor-card hidden">
       <div class="doctor-badge">
         <span class="doctor-avatar">👨‍⚕️🌾</span>
@@ -160,7 +144,6 @@
           <p class="doctor-subtitle" data-i18n="doctorCardSubtitle">Instant WhatsApp prescription sharing with local KVK & agri officers.</p>
         </div>
       </div>
-
       <div class="doctor-field-inputs">
         <div class="doctor-form-row">
           <input type="text" id="docFarmerName" data-i18n-placeholder="namePlaceholder" placeholder="Farmer Name" />
@@ -170,7 +153,6 @@
           <input type="tel" id="docCustomPhone" placeholder="Specialist WhatsApp (Optional, default KVK helpline)" />
         </div>
       </div>
-
       <div class="doctor-action-btns">
         <button type="button" class="btn-doctor-whatsapp" onclick="sendToCropDoctor()">
           💬 <span data-i18n="btnSendDoctor">Send Case to Crop Doctor</span>
@@ -179,7 +161,6 @@
     </div>
   </section>
 
-  <!-- Weather & Climate Warnings -->
   <section id="weather" class="weather-section">
     <div class="container">
       <h2 class="section-title" data-i18n="weatherSectionTitle">🌦️ Localized Weather & Climate Warning</h2>
@@ -302,7 +283,6 @@
     </div>
   </section>
 
-  <!-- 1. Live Mandi Market Prices Section -->
   <section id="mandi" class="feature-section">
     <div class="container text-center">
       <h2 class="feature-heading" data-i18n="mandiTitle">📊 Live Mandi Market Prices (మార్కెట్ ధరలు)</h2>
@@ -323,14 +303,11 @@
         </div>
       </div>
 
-      <!-- Live Mandi Rate Cards Grid -->
       <div class="mandi-grid" id="mandiGrid"></div>
-
       <p class="disclaimer-text" data-i18n="mandiDisclaimer">⚠️ Market rates reflect average daily modal trading prices per quintal (100 kg).</p>
     </div>
   </section>
 
-  <!-- 1. Smart Fertilizer & NPK Dosage Calculator Section -->
   <section id="fertilizer" class="feature-section alt-bg">
     <div class="container text-center">
       <h2 class="feature-heading" data-i18n="fertTitle">🧪 Smart Fertilizer & NPK Dosage Calculator</h2>
@@ -376,7 +353,6 @@
     </div>
   </section>
 
-  <!-- 2. Agricultural Schemes & Financial Support Section -->
   <section id="schemes" class="feature-section">
     <div class="container text-center">
       <h2 class="feature-heading" data-i18n="schemesTitle">🏛️ Agricultural Schemes & Financial Support</h2>
@@ -407,7 +383,41 @@
     </div>
   </section>
 
-  <!-- Advisory Board -->
+  <section id="tools" class="feature-section alt-bg">
+    <div class="container text-center">
+      <h2 class="feature-heading">🧰 Farmer Support Toolkit</h2>
+      <p class="feature-subheading">Useful tools for the real problems farmers face today: weather risk, water scarcity, uncertain market prices, storage contacts, scheme reminders, and field notes.</p>
+
+      <div class="tool-launch-grid">
+        <div class="tool-card">
+          <span class="tool-icon">🌦️</span>
+          <h3>Weather Risk</h3>
+          <p>Track current conditions and act before heavy rain, heat stress, or dry spells hit your field.</p>
+        </div>
+        <div class="tool-card">
+          <span class="tool-icon">💧</span>
+          <h3>Irrigation Planner</h3>
+          <p>Estimate water need for your crop stage and farm area before watering your field.</p>
+        </div>
+        <div class="tool-card">
+          <span class="tool-icon">📊</span>
+          <h3>Market Offers</h3>
+          <p>Compare buyer rates and keep track of verified prices from local markets and traders.</p>
+        </div>
+        <div class="tool-card">
+          <span class="tool-icon">📋</span>
+          <h3>Insurance & Learning</h3>
+          <p>Keep a checklist, storage contacts, field notes, and trusted extension links in one place.</p>
+        </div>
+      </div>
+
+      <div class="tool-actions">
+        <a href="farmer-tools.html" class="btn-hero">Open Full Farmer Tools</a>
+        <a href="farmer-tools.html#market" class="btn-secondary">Compare Market Prices</a>
+      </div>
+    </div>
+  </section>
+
   <section id="advisory" class="advisory-section">
     <div class="container">
       <div class="advisory-card">
@@ -418,7 +428,6 @@
     </div>
   </section>
 
-  <!-- Ask an Agri Specialist Contact Form -->
   <section id="contact" class="contact-section">
     <div class="container contact-card">
       <h2 class="section-title" data-i18n="specialistTitle">Ask an Agri Specialist</h2>
@@ -449,7 +458,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <p>@ 2026 AgriGuard Support Information System. All rights reserved.</p>
   </footer>
