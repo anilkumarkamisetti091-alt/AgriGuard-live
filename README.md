@@ -2,20 +2,32 @@
 
 A farmer-support website with crop scanning UI, weather information, market-price display, fertilizer planning, scheme links, and specialist enquiries.
 
-## Farmer Support Tools
+## Field Desk: practical tools for day-to-day farming
 
-Open [`farmer-tools.html`](farmer-tools.html) for a dedicated set of practical tools:
+Open [`field-desk.html`](field-desk.html) for the new installable, offline-ready Field Desk:
 
-- Regional or approximate-location weather forecast and basic weather-risk reminders (Open-Meteo).
-- A clearly labeled, illustrative irrigation planning estimate.
-- Farmer-entered market offer comparisons with links to e-NAM and AGMARKNET. Submitted prices are not live market data.
-- Local storage, transport, buyer, equipment, and farm-labour contact notebook.
-- Crop-insurance claim reminder checklist and official scheme/soil-health links.
-- Soil-health actions, trusted ICAR/KVK learning links, and a private field-notes notebook.
-- English, Hindi, and Telugu interface text for the new tools.
+- Private field diary for crop, field, growth stage, observed symptoms, and actions taken.
+- Farm task planner for farmer-entered reminders, with optional browser notifications where supported.
+- Local income and expense book with recorded totals and balance.
+- Seed quantity calculator using the farmer's own seed rate, plus a water-depth-to-volume conversion. Neither tool prescribes agronomic rates.
+- Download/import backup and clear locally stored Field Desk records.
+- English, Hindi, and Telugu interface; responsive layout and accessibility focus/assistive status.
+- Service-worker app shell for reopening the Field Desk after its first successful online visit.
 
-Entries in these new tools use browser `localStorage` on the current device only; there is no shared marketplace or public community backend. Browser data can be cleared with the page's **Clear saved data** button. Weather requires an internet connection and is not an official warning service. Irrigation figures are illustrative estimates, not agronomic prescriptions. Always verify prices, insurance deadlines, scheme eligibility, and crop advice with official sources or qualified local agricultural staff.
+Records are stored in browser `localStorage` on the current device only. They are not uploaded, synced, or shared. Download a backup before clearing site data or changing devices. Browser storage may be removed by the device/browser, so it is not a substitute for paper records or a separate backup.
 
-## Run locally
+### Offline and installation
 
-Serve the repository directory using a local web server (for example, `python -m http.server`) and open `farmer-tools.html`. Weather/geolocation features may require HTTPS or localhost. The existing Flask API in `app.py` is used for specialist contact requests from the main site.
+Deploy the site over HTTPS (or run it on `localhost` for development), open `field-desk.html` once while connected, and allow the service worker to finish installing. Then the Field Desk page and its core tools can open offline in the same browser. On supported browsers, use the browser's **Install app** / **Add to Home Screen** option. Offline support does not make weather forecasts, external government sites, or specialist enquiry submission available without internet.
+
+To test locally, serve the repository directory rather than opening the HTML file directly:
+
+```bash
+python -m http.server 8000
+```
+
+Then visit `http://localhost:8000/field-desk.html`. Service workers do not work from a `file://` URL. The existing main site's live weather and server contact form continue to require network access.
+
+## Existing Farmer Support Tools
+
+Open [`farmer-tools.html`](farmer-tools.html) for regional weather, an illustrative irrigation estimate, farmer-entered market comparisons, contact notes, an insurance checklist, soil-health guidance, learning links, and private field notes. Its locally entered records are stored in the browser on the current device.
